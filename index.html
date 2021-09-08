@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Active Slide</title>
+
+
+    <link rel="stylesheet" type="text/css" href="assets/css/fullpage.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/examples.css" />
+
+    <!--[if IE]>
+        <script type="text/javascript">
+             var console = { log: function() {} };
+        </script>
+    <![endif]-->
+</head>
+<body>
+
+<ul id="menu">
+    <li data-menuanchor="firstPage" class="active"><a href="#firstPage">First slide</a></li>
+    <li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li>
+    <li data-menuanchor="3rdPage"><a href="#3rdPage">Third slide</a></li>
+</ul>
+
+
+<div id="fullpage">
+    <div class="section " id="section0">
+        <h1>Section 1</h1>
+    </div>
+    <div class="section" id="section1">
+        <div class="intro">
+            <h1>Section 2</h1>
+        </div>
+       
+   
+    </div>
+    <div class="section fp-auto-height" id="section2">
+        <div class="intro">
+            <h1>Section 3</h1>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="assets/js/fullpage.min.js"></script>
+<script type="text/javascript">
+
+
+$(function(){
+var myFullpage = new fullpage('#fullpage', {
+        sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+        anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+        menu: '#menu',
+        navigation: true,
+        lazyLoad: true
+    });
+
+
+
+  function addSlidesNavigation(section, numSlides){
+        section.append('<div class="fp-slidesNav"><ul></ul></div>');
+        var nav = section.find('.fp-slidesNav');
+
+        //top or bottom
+        nav.addClass(options.slidesNavPosition);
+
+        for(var i=0; i< numSlides; i++){
+            nav.find('ul').append('<li><a href="#"><span></span></a></li>');
+        }
+
+        //centering it
+        nav.css('margin-left', '-' + (nav.width()/2) + 'px');
+
+        nav.find('li').first().find('a').addClass('active');
+}
+
+
+
+
+if(options.slidesNavigation){
+    addSlidesNavigation($(this), numSlides);
+}
+
+});
+
+
+
+    
+
+
+  
+
+
+
+
+</script>
+
+</body>
+</html>
